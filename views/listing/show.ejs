@@ -3,7 +3,7 @@
     <div class="col-8 offset-3">
         <h3>Listing Details</h3>
     </div>
-        <div class="card col-6 offset-3 show-card">
+        <div class="card col-6 offset-3 show-card listing-card">
             <img src="<%= listing.image.url %>" class="card-img-top show-image" alt="listing image">
             <div class="card-body">
               <p class="card-text">
@@ -26,6 +26,39 @@
         <button class="btn btn-dark  offset-3">Delete</button>
     </form>
     <br>
+</div>
+<div class="col-8 offset-3">
+    <hr>
+    <h4>Leave a review</h4>
+    <form action="/listings/<%= listing._id %>/reviews" method="post" class="needs-validation" novalidate>
+        <div class="mb-3 mt-3">
+            <label class="form-label" for="rating">Rating</label>
+            <input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range">
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label" for="comment">Comments</label>
+            <textarea name="review[comment]" id="comment" class="form-control" rows="10" cols="10" required></textarea>
+        </div>
+        <br>
+        <button class="btn btn-outline-dark">Submit</button>
+    </form>
+<hr>
+<p> <b>All Reviews</b></p>
+<div class="row">
+<% for(review of listing.reviews) {%>
+    <div class="card col-5 mb-3 ms-3">
+        <div class="card-body">
+        <h5 class="card-title">Ayush Pathak</h5>
+         <p class="card-text"> <%= review.comment %> </p>
+        <p class="card-text"> <%= review.rating %> / 5</p>
+<form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+    <button class="btn btn-sm btn-dark mb-3">Delete</button>
+</form>
+        </div>
+    </div>
+    <% } %>
+
+</div>
 </div>
 <br>
    
