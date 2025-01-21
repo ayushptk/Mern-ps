@@ -1,4 +1,9 @@
 <% layout("/layout/boilerplate.ejs") %>
+<% if (locals.success) { %>
+  <div class="alert alert-success">
+    <%= locals.success %>
+  </div>
+<% } %>
 <body> 
     <h3>All Listing</h3>
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">

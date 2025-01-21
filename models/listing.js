@@ -9,10 +9,10 @@ const listingSchema = new Schema({
     },
     description: String,
     image: {
-        filename: { type: String, default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMQHJ3-Iz_LUWM1xZ0JrcdD7S9MFeZ6VtBw&s" },
+        filename: { type: String, default: "https://thumbs.dreamstime.com/b/luxury-hotel-room-master-bedroom-creative-ai-design-background-instagram-facebook-wall-painting-photo-wallpaper-backgrounds-325040660.jpg" },
         url: { 
             type: String, 
-            default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMQHJ3-Iz_LUWM1xZ0JrcdD7S9MFeZ6VtBw&s",
+            default: "https://thumbs.dreamstime.com/b/luxury-hotel-room-master-bedroom-creative-ai-design-background-instagram-facebook-wall-painting-photo-wallpaper-backgrounds-325040660.jpg",
         },
     },
     price: Number,
@@ -24,6 +24,10 @@ const listingSchema = new Schema({
             ref: "Review",
         }
     ],
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        },
 });
 
 listingSchema.post("findOneAndDelete", async (listing) => {
